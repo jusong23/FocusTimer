@@ -45,16 +45,26 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWk-Lb-xnM">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0초" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWk-Lb-xnM">
                                 <rect key="frame" x="30" y="641" width="354" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uzO-Y0-08l">
+                                <rect key="frame" x="14" y="574" width="386" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="집중시간 초기화"/>
+                                <connections>
+                                    <action selector="intializeFoucsTime:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KFR-7H-Py4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="uzO-Y0-08l" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="14" id="4gv-ls-c2W"/>
                             <constraint firstItem="NiN-J6-9hD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="157" id="7yN-iR-XnA"/>
                             <constraint firstItem="a3f-c6-0am" firstAttribute="top" secondItem="NiN-J6-9hD" secondAttribute="bottom" constant="103.5" id="VWN-0h-C8r"/>
                             <constraint firstItem="NiN-J6-9hD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="90" id="XfQ-EZ-fs4"/>
@@ -62,13 +72,16 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="a3f-c6-0am" secondAttribute="trailing" constant="90" id="crX-zS-EGx"/>
                             <constraint firstItem="yWk-Lb-xnM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="dfg-sA-19q"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yWk-Lb-xnM" secondAttribute="trailing" constant="30" id="dgk-Lt-K8X"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uzO-Y0-08l" secondAttribute="trailing" constant="14" id="eGI-0Z-Xct"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NiN-J6-9hD" secondAttribute="trailing" constant="90" id="m6z-PP-pIY"/>
+                            <constraint firstItem="uzO-Y0-08l" firstAttribute="top" secondItem="a3f-c6-0am" secondAttribute="bottom" constant="55" id="pIt-Fo-J6K"/>
                             <constraint firstItem="a3f-c6-0am" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="90" id="wNT-yM-5rL"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="countOfTimestop" destination="yWk-Lb-xnM" id="qhN-ge-xEw"/>
                         <outlet property="stopButton" destination="njY-CM-HcO" id="VUX-y7-lc8"/>
+                        <outlet property="textOfIntialize" destination="uzO-Y0-08l" id="qOZ-ZA-fW0"/>
                         <outlet property="timerLabel" destination="NiN-J6-9hD" id="Td7-ab-yPI"/>
                         <outlet property="toggleButton" destination="4HM-IA-0ha" id="h5A-E0-ya9"/>
                     </connections>
