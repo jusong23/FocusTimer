@@ -11,8 +11,10 @@ class FoucsingTimeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
+//    @IBAction func goToSettingViewController(_ sender: Any) {
+//        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "SettingViewController") else { return }
+//            self.navigationController?.pushViewController(viewController, animated: true)
+//    }
 }

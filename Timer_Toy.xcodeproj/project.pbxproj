@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9B5704DE286406D50027698D /* TimeSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5704DD286406D50027698D /* TimeSet.swift */; };
 		9B67D34C2866D141004D9A30 /* FoucsingTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B67D34B2866D141004D9A30 /* FoucsingTimeViewController.swift */; };
+		9B67D34E2866D3FC004D9A30 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B67D34D2866D3FC004D9A30 /* SettingViewController.swift */; };
 		9B7D51702859E57B00B3185B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D516F2859E57B00B3185B /* AppDelegate.swift */; };
 		9B7D51722859E57B00B3185B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D51712859E57B00B3185B /* SceneDelegate.swift */; };
 		9B7D51742859E57B00B3185B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D51732859E57B00B3185B /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		9B5704DD286406D50027698D /* TimeSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSet.swift; sourceTree = "<group>"; };
 		9B67D34B2866D141004D9A30 /* FoucsingTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoucsingTimeViewController.swift; sourceTree = "<group>"; };
+		9B67D34D2866D3FC004D9A30 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		9B7D516C2859E57B00B3185B /* Timer_Toy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timer_Toy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B7D516F2859E57B00B3185B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B7D51712859E57B00B3185B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				9B7D51732859E57B00B3185B /* ViewController.swift */,
 				9B5704DD286406D50027698D /* TimeSet.swift */,
 				9B7D51752859E57B00B3185B /* Main.storyboard */,
+				9B67D34D2866D3FC004D9A30 /* SettingViewController.swift */,
 				9B67D34B2866D141004D9A30 /* FoucsingTimeViewController.swift */,
 				9B7D51782859E57E00B3185B /* Assets.xcassets */,
 				9B7D517A2859E57E00B3185B /* LaunchScreen.storyboard */,
@@ -149,6 +152,7 @@
 				9B7D51722859E57B00B3185B /* SceneDelegate.swift in Sources */,
 				9B5704DE286406D50027698D /* TimeSet.swift in Sources */,
 				9B67D34C2866D141004D9A30 /* FoucsingTimeViewController.swift in Sources */,
+				9B67D34E2866D3FC004D9A30 /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

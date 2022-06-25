@@ -33,11 +33,11 @@ class ViewController: UIViewController {
     var currentSeconds = 0
     
     
-    @IBAction func goToFocusingView(_ sender: Any) {
-                guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "FoucsingTimeViewController") else { return }
-                    self.navigationController?.pushViewController(viewController, animated: true)
-    }
-    
+//    @IBAction func goToFocusingView(_ sender: Any) {
+//                guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "FoucsingTimeViewController") else { return }
+//                    self.navigationController?.pushViewController(viewController, animated: true)
+//    }
+//    
     
 //MARK: - UserDefaults로 Load하기
     func loadTime() {

@@ -95,10 +95,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="q4e-yp-X4i">
-                        <barButtonItem key="rightBarButtonItem" image="gearshape" catalog="system" id="PBQ-I1-FGY">
+                        <barButtonItem key="rightBarButtonItem" image="note.text" catalog="system" id="PBQ-I1-FGY">
                             <color key="tintColor" systemColor="labelColor"/>
                             <connections>
                                 <action selector="goToFocusingView:" destination="BYZ-38-t0r" id="BOB-bN-Bbu"/>
+                                <segue destination="m6E-tZ-Qbf" kind="show" id="kdr-TF-ruc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -121,17 +122,68 @@
                     <view key="view" contentMode="scaleToFill" id="oQQ-dx-b3b">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FoucisingTimeViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xfn-8p-D63">
+                                <rect key="frame" x="14" y="192" width="386" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="OzT-Rd-dKf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Xfn-8p-D63" firstAttribute="leading" secondItem="OzT-Rd-dKf" secondAttribute="leading" constant="14" id="0O1-GB-zEZ"/>
+                            <constraint firstItem="OzT-Rd-dKf" firstAttribute="trailing" secondItem="Xfn-8p-D63" secondAttribute="trailing" constant="14" id="3fP-F7-AlT"/>
+                            <constraint firstItem="Xfn-8p-D63" firstAttribute="top" secondItem="OzT-Rd-dKf" secondAttribute="top" constant="104" id="rx2-bm-F5i"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="MlC-gg-1eM">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="gearshape.fill" catalog="system" id="C76-Xo-BkC">
+                            <color key="tintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="pKy-wS-GEd" kind="show" id="Usj-wa-Z6L"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0eS-TG-ZOf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="813" y="80"/>
+            <point key="canvasLocation" x="765" y="80"/>
+        </scene>
+        <!--Setting View Controller-->
+        <scene sceneID="DDq-2K-hgy">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yGs-8R-tRC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="SettingViewController" id="pKy-wS-GEd" customClass="SettingViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2dd-CK-g5U">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SettingViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sDE-1b-dWz">
+                                <rect key="frame" x="14" y="192" width="386" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="xzv-lb-waX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="sDE-1b-dWz" firstAttribute="leading" secondItem="xzv-lb-waX" secondAttribute="leading" constant="14" id="Pao-uW-BR4"/>
+                            <constraint firstItem="xzv-lb-waX" firstAttribute="trailing" secondItem="sDE-1b-dWz" secondAttribute="trailing" constant="14" id="fal-Hs-fKX"/>
+                            <constraint firstItem="sDE-1b-dWz" firstAttribute="top" secondItem="xzv-lb-waX" secondAttribute="top" constant="104" id="s8g-cq-oOf"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="jsV-J0-5Cz"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1480" y="80"/>
         </scene>
     </scenes>
     <resources>
-        <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
+        <image name="note.text" catalog="system" width="128" height="106"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
