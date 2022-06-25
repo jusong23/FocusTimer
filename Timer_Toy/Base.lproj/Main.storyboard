@@ -129,13 +129,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="집중시간" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jtc-dY-wlu">
+                                <rect key="frame" x="14" y="328" width="386" height="28"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OzT-Rd-dKf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Xfn-8p-D63" firstAttribute="leading" secondItem="OzT-Rd-dKf" secondAttribute="leading" constant="14" id="0O1-GB-zEZ"/>
                             <constraint firstItem="OzT-Rd-dKf" firstAttribute="trailing" secondItem="Xfn-8p-D63" secondAttribute="trailing" constant="14" id="3fP-F7-AlT"/>
+                            <constraint firstItem="Jtc-dY-wlu" firstAttribute="leading" secondItem="OzT-Rd-dKf" secondAttribute="leading" constant="14" id="Dgi-pC-h5q"/>
+                            <constraint firstItem="Jtc-dY-wlu" firstAttribute="top" secondItem="Xfn-8p-D63" secondAttribute="bottom" constant="106" id="cEM-YI-7bi"/>
                             <constraint firstItem="Xfn-8p-D63" firstAttribute="top" secondItem="OzT-Rd-dKf" secondAttribute="top" constant="104" id="rx2-bm-F5i"/>
+                            <constraint firstItem="OzT-Rd-dKf" firstAttribute="trailing" secondItem="Jtc-dY-wlu" secondAttribute="trailing" constant="14" id="uOE-F3-uYd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MlC-gg-1eM">
@@ -146,10 +155,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="savedFocusTime" destination="Jtc-dY-wlu" id="sAa-jd-4yL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0eS-TG-ZOf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="765" y="80"/>
+            <point key="canvasLocation" x="763.768115942029" y="79.6875"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="DDq-2K-hgy">
