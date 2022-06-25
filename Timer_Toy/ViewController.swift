@@ -32,6 +32,13 @@ class ViewController: UIViewController {
     var timer: DispatchSourceTimer? // [GCB] Queue를 만들어 올리기만 하면 알아서 병렬적 작동
     var currentSeconds = 0
     
+    
+    @IBAction func goToFocusingView(_ sender: Any) {
+                guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "FoucsingTimeViewController") else { return }
+                    self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    
 //MARK: - UserDefaults로 Load하기
     func loadTime() {
         // 차 있으면
