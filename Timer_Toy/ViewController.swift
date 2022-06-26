@@ -21,10 +21,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var countOfTimestop: UILabel!
     @IBOutlet weak var textOfIntialize: UIButton!
     
+    var servedArray:[Int]? = []
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureToggleButton()
         self.loadTime()
+        if let name = servedArray {
+                debugPrint("it`s worging \(name)")
+        }
     }
 
     var usersFocusTime: [Int] = []
@@ -131,10 +137,10 @@ class ViewController: UIViewController {
         }
         // 일시정지 후 nil을 대입하려면 resume해야 런타임 에러 안남
         currentSeconds = 0
-//        let intedTime = Int(self.usersFocusTime.max() ?? "0")
-//        debugPrint(intedTime)
-//        self.countOfTimestop.text = String(usersFocusTime.max() ?? 0) + "초"
-//        debugPrint(usersFocusTime.max() ?? 0)
+
+        if maxFocusTime.count >= 2 {
+            self.maxFocusTime.removeSubrange(0..<maxFocusTime.count)
+        }
         
         if hour != 0, minutes != 0, seconds != 0 {
             self.countOfTimestop.text = String(format: "%d시간 %d분 %d초", hour,minutes,seconds)
@@ -143,14 +149,16 @@ class ViewController: UIViewController {
         } else if seconds != 0 {
             self.countOfTimestop.text = String(format: "%d초", seconds)
         }
-        
         UserDefaults.standard.setValue(usersFocusTime.max(), forKey: "max")
         self.maxFocusTime.append(usersFocusTime.max() ?? 0) // 스탑누를 때마다 앞에꺼랑 더한 후 배열에 저장 유저디폴트로 저장
         let total = maxFocusTime.reduce(0, +)
         debugPrint("usersFocusTime: \(usersFocusTime)")
+        debugPrint("maxFocusTime: \(maxFocusTime)")
         debugPrint("total: \(total)")
         UserDefaults.standard.setValue(total, forKey: "sum")
 
+        
+        // 처음 저장할때 maxFocusTime의 갯수가 2개 이상이면 마지막꺼빼고 다 지우기
         // 배열 형식을 string으로 바꾸니까 해결
         self.timerLabel.text = "00:00:00"
         self.timerStatus = .end
@@ -164,13 +172,9 @@ class ViewController: UIViewController {
             self.countOfTimestop.alpha = 1
             self.textOfIntialize.alpha = 1
         })
-    }
+    } // FocusVC에서 초기화 했는데, total에 자꾸 이전 값까지 더해짐
     
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if let viewController = segue.destination as? FoucsingTimeViewController {
-                viewController.servedArray = maxFocusTime
-            }
-    }
+
 }
 

@@ -13,15 +13,12 @@ class FoucsingTimeViewController: UIViewController {
     @IBOutlet weak var sumOfTodaysFocusTime: UILabel!
     @IBOutlet weak var resetAndSaveSumOfTodaysFocusTime: UIButton!
     
-    var servedArray:[Int]? = []
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loadTime()
-        if let name = servedArray {
-                debugPrint("it`s worging \(name)")
-        }
+
     }
     
     
@@ -39,12 +36,23 @@ class FoucsingTimeViewController: UIViewController {
     @IBAction func resetAndSaveSumOfTodaysFocusTime(_ sender: Any) {
         UserDefaults.standard.removeObject(forKey: "max")
         UserDefaults.standard.removeObject(forKey: "sum")
-        
+//        debugPrint(servedArray)
+
+//        servedArray?.removeAll()
+// max를 리무브 올해주기 0으로 초기화 하든
         debugPrint(UserDefaults.standard.integer(forKey: "max"))
         debugPrint(UserDefaults.standard.integer(forKey: "sum"))
-        servedArray?.removeAll()
+//        debugPrint(servedArray)
         // 여기서 총합이 0이 된 servedArray를 maxArray를 앞쪽 뷰컨에 저장해줘야함
 // total 배열에 저장된 값도 지워야함
+         func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+                if let viewController = segue.destination as? ViewController {
+                    UserDefaults.standard.removeObject(forKey: "sum")
+
+                    viewController.maxFocusTime.removeAll()
+                }
+        }
+        
     }
 }
 
