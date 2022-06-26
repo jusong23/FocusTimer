@@ -43,14 +43,14 @@ class FoucsingTimeViewController: UIViewController {
 // total 배열에 저장된 값도 지워야함
         
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//           if let viewController = segue.destination as? ViewController {
-////                        viewController.maxFocusTime = []
-//               debugPrint("it`s woooooorking")
-//           }
-//   }
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+          if let viewController = segue.destination as? ViewController {
+              viewController.maxFocusTime = [4,9,4,8]
+          }
+  }
 }
 
 // 오늘의 집중시간 초기화를 눌렀을 때 초기화가 안됨
+// 공부 끝 ! 했을때 까지는 유저디폴트 sum이 0으로 초기화 but, 처음 화면으로 돌아가면 maxFocusTime에 [2,4] 등 이전 값이 저장되어 있으므로 유저디포트에 덧대어 저장되는것
+// ---> 공부 끝 ! 눌렀을 때 maxFocusTime도 0으로 초기화 해야한다.
+// test 1 2 3 
