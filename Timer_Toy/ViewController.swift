@@ -138,9 +138,6 @@ class ViewController: UIViewController {
         // 일시정지 후 nil을 대입하려면 resume해야 런타임 에러 안남
         currentSeconds = 0
 
-        if maxFocusTime.count >= 2 {
-            self.maxFocusTime.removeSubrange(0..<maxFocusTime.count)
-        }
         
         if hour != 0, minutes != 0, seconds != 0 {
             self.countOfTimestop.text = String(format: "%d시간 %d분 %d초", hour,minutes,seconds)
@@ -156,9 +153,9 @@ class ViewController: UIViewController {
         debugPrint("maxFocusTime: \(maxFocusTime)")
         debugPrint("total: \(total)")
         UserDefaults.standard.setValue(total, forKey: "sum")
-
+        //maxFoucsTime을 초기화해야..
         
-        // 처음 저장할때 maxFocusTime의 갯수가 2개 이상이면 마지막꺼빼고 다 지우기
+        
         // 배열 형식을 string으로 바꾸니까 해결
         self.timerLabel.text = "00:00:00"
         self.timerStatus = .end
