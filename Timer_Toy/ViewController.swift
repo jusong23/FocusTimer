@@ -28,6 +28,7 @@ class ViewController: UIViewController {
     }
 
     var usersFocusTime: [Int] = []
+    var maxFocusTime: [Int] = []
     var timerStatus: TimerStatus = .end
     var timer: DispatchSourceTimer? // [GCB] Queue를 만들어 올리기만 하면 알아서 병렬적 작동
     var currentSeconds = 0
@@ -35,13 +36,13 @@ class ViewController: UIViewController {
     
 //MARK: - UserDefaults로 Load하기
     func loadTime() {
-//        // 차 있으면
-//        // viewDidLoad에 있으니 로드 시 한번밖에 안됨
-//            self.countOfTimestop.text = "최근 집중시간 " + (UserDefaults.standard.string(forKey: "max") ?? "0") + "초"
-//            UIView.animate(withDuration: 0.3, animations: {
-//                self.countOfTimestop.alpha = 1
-//                self.textOfIntialize.alpha = 1
-//            })
+        // 차 있으면
+        // viewDidLoad에 있으니 로드 시 한번밖에 안됨
+            self.countOfTimestop.text = "최근 집중시간 " + (UserDefaults.standard.string(forKey: "max") ?? "0") + "초"
+            UIView.animate(withDuration: 0.3, animations: {
+                self.countOfTimestop.alpha = 1
+                self.textOfIntialize.alpha = 1
+            })
     }
 
 
@@ -97,7 +98,7 @@ class ViewController: UIViewController {
                 self.timerLabel.text = String(format: "%02d:%02d:%02d", hour,minutes,seconds)
                 
                 self.usersFocusTime.append(self.currentSeconds) // currentSeconds를 usersFocusTime배열 안에 넣는 과정(max구하기 위해)
-                debugPrint(self.usersFocusTime)
+//                debugPrint(self.usersFocusTime)
                 
                 UIView.animate(withDuration: 0.3, animations: {
                     self.countOfTimestop.alpha = 0
@@ -121,6 +122,10 @@ class ViewController: UIViewController {
     }
     
     func stopTimer() {
+        let hour = (self.usersFocusTime.max() ?? 0 ) / 3600
+        let minutes = (self.usersFocusTime.max() ?? 0 % 3600) / 60
+        let seconds = (self.usersFocusTime.max() ?? 0 % 3600) % 60
+        
         if self.timerStatus == .pause {
             self.timer?.resume()
         }
@@ -128,8 +133,24 @@ class ViewController: UIViewController {
         currentSeconds = 0
 //        let intedTime = Int(self.usersFocusTime.max() ?? "0")
 //        debugPrint(intedTime)
-        self.countOfTimestop.text = String(usersFocusTime.max() ?? 0) + "초"
+//        self.countOfTimestop.text = String(usersFocusTime.max() ?? 0) + "초"
+//        debugPrint(usersFocusTime.max() ?? 0)
+        
+        if hour != 0, minutes != 0, seconds != 0 {
+            self.countOfTimestop.text = String(format: "%d시간 %d분 %d초", hour,minutes,seconds)
+        } else if minutes != 0, seconds != 0 {
+            self.countOfTimestop.text = String(format: "%d분 %d초", minutes,seconds)
+        } else if seconds != 0 {
+            self.countOfTimestop.text = String(format: "%d초", seconds)
+        }
+        
         UserDefaults.standard.setValue(usersFocusTime.max(), forKey: "max")
+        self.maxFocusTime.append(usersFocusTime.max() ?? 0) // 스탑누를 때마다 앞에꺼랑 더한 후 배열에 저장 유저디폴트로 저장
+        let total = maxFocusTime.reduce(0, +)
+        debugPrint("usersFocusTime: \(usersFocusTime)")
+        debugPrint("total: \(total)")
+        UserDefaults.standard.setValue(total, forKey: "sum")
+
         // 배열 형식을 string으로 바꾸니까 해결
         self.timerLabel.text = "00:00:00"
         self.timerStatus = .end
@@ -143,6 +164,13 @@ class ViewController: UIViewController {
             self.countOfTimestop.alpha = 1
             self.textOfIntialize.alpha = 1
         })
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if let viewController = segue.destination as? FoucsingTimeViewController {
+                viewController.servedArray = maxFocusTime
+            }
     }
 }
 
