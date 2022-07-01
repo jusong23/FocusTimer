@@ -6,7 +6,8 @@
 //
 
 import UIKit
-// hihi
+import Alamofire
+
 enum TimerStatus {
     case start
     case pause
@@ -116,7 +117,7 @@ class ViewController: UIViewController {
     }
     
 //MARK: - 저장 버튼 : 타이머 정지 및 배열에 저장된 최고 값을 출력 , timer?.suspend 직후 nil을 대입해 타이머를 정지시키면 런타임에러
-    //출력이 String로 됨 시간,분,단위로 고치기 (ex. 94초 -> 1분 34초)
+
     @IBAction func tapCancelButton(_ sender: UIButton) {
       switch self.timerStatus {
       case .start, .pause:
@@ -149,13 +150,16 @@ class ViewController: UIViewController {
         UserDefaults.standard.setValue(usersFocusTime.max(), forKey: "max")
         self.maxFocusTime.append(usersFocusTime.max() ?? 0) // 스탑누를 때마다 앞에꺼랑 더한 후 배열에 저장 유저디폴트로 저장
         let total = maxFocusTime.reduce(0, +)
-        debugPrint("usersFocusTime: \(usersFocusTime)")
+        
+//        debugPrint("usersFocusTime: \(usersFocusTime)")
         debugPrint("maxFocusTime: \(maxFocusTime)")
-        debugPrint("total: \(total)")
+//        debugPrint("total: \(total)")
         UserDefaults.standard.setValue(total, forKey: "sum")
         //maxFoucsTime을 초기화해야..
+        debugPrint("집중 방해 횟수 : \(maxFocusTime.count)")
+        postTest(a: maxFocusTime, b: maxFocusTime.count)
         
-        
+    
         // 배열 형식을 string으로 바꾸니까 해결
         self.timerLabel.text = "00:00:00"
         self.timerStatus = .end
@@ -171,6 +175,37 @@ class ViewController: UIViewController {
         })
     } // FocusVC에서 초기화 했는데, total에 자꾸 이전 값까지 더해짐
     
+//MARK: - POST로 서버에 값을 내보내기 :: 서버에서 이 데이터를 Json 파일에 저장할 수 있음?
+
+    func postTest(a:[Int], b:Int) {
+                let url = "https://ptsv2.com/t/prvrx-1656587086/post"
+                var request = URLRequest(url: URL(string: url)!)
+                request.httpMethod = "POST"
+                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                request.timeoutInterval = 10
+                
+                // POST 로 보낼 정보
+                let params = [
+                    "maxFocusTime": [a],
+                    "집중 방해 횟수": b
+                ] as [String : Any]
+
+                // httpBody 에 parameters 추가
+                do {
+                    try request.httpBody = JSONSerialization.data(withJSONObject: params, options: [])
+                } catch {
+                    print("http Body Error")
+                }
+                
+                AF.request(request).responseString { (response) in
+                    switch response.result {
+                    case .success:
+                        print("POST 성공")
+                    case .failure(let error):
+                        print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
+                    }
+                }
+            }
     
 
 }
